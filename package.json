@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Student Clubs Announcement App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "student",
+    "club",
+    "app"
+  ],
+  "author": "Bedirhan Yıldırım",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "googleapis": "^27.0.0",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.9",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
+  }
+}
