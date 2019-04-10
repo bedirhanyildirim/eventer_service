@@ -120,3 +120,7 @@ npm start
 
 > if there is **--** on a method, it's mean it is **not** done yet
 > if there is **++** on a method, it's mean it is done
+
+## Collaborators
+- Bedirhan Yıldırım
+- Bilal Ekrem Harmanşa
