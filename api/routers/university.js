@@ -10,7 +10,7 @@ const universityController = require('../controller/universityController');
 router.get('/', universityController.findAll);
 
 /* Get University */
-router.get('/:uniId', universityController.findAll);
+router.get('/:uniId', universityController.find);
 
 /* Add a University */
 router.post('/', universityController.insert);
