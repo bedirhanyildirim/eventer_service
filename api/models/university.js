@@ -9,8 +9,8 @@ const uniSchema = mongoose.Schema({
   website: {type: String, default: ''},
   facebook: {type: String, default: ''},
   twitter: {type: String, default: ''},
-  instagram: {typ: String, default: ''},
-  ytube: {type: String, default: ''}
+  instagram: {type: String, default: ''},
+  youtube: {type: String, default: ''}
 });
 
 module.exports = mongoose.model('University', uniSchema);
