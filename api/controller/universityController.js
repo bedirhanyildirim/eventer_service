@@ -54,7 +54,7 @@ exports.insert = (req, res, next) => {
         res.status(201).send("OK");
     })
     .catch(err => {
-        let response = new Response(err, `Couldn't created`);
+        let response = new Response(err, `University ${uni.name} could not be created`);
         res.status(500).json(response);
     });
 }
@@ -71,7 +71,7 @@ exports.update = (req, res, next) => {
         res.status(201).send("OK");
     })
     .catch(err => {
-        let response = new Response(err, `Couldn't update`);
+        let response = new Response(err, `University ${id} could not be updated`);
         res.status(500).json(response);
     });
 }
