@@ -18,14 +18,14 @@ exports.findAll = (req,res, next) => {
 };
 
 exports.find = (req,res,next) => {
-    const id = req.params.universityId;
+    const id = req.params.uniId;
     
     University
     .findById(id)
     .select('_id name detail contact logo rector website facebook twitter instagram youtube')
     .exec()
-    .then(doc => {
-        let response = new Response(docs, "University found");
+    .then(university => {
+        let response = new Response(university, "University found");
         res.status(200).json(response);
     })
     .catch(err => {
