@@ -22,4 +22,21 @@ router.put('/:uniId', universityController.update);
 /* Delete University */
 router.delete('/:uniId', universityController.delete);
 
+/*********** Faculties ************/
+
+/* Get All Faculties */
+router.get('/:uniId/faculty', facultyController.findAll);
+
+/* Get a faculty */
+router.get('/:uniId/faculty/:facultyId', facultyController.find);
+
+/* Add a faculty */
+router.post('/:uniId/faculty/', facultyController.insert);
+
+/* Update a faculty */
+router.put('/:uniId/faculty/:facultyId', facultyController.update);
+
+/* Delete a faculty */
+router.delete('/:uniId/faculty/:facultyId', facultyController.delete);
+
 module.exports = router;
