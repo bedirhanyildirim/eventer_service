@@ -1,5 +1,5 @@
 const University = require('../models/university');
-const Faculty = require('../models/faculty');
+const Department = require('../models/department');
 const Response = require('../util/response')
 
 exports.findAll = (req,res, next) => {
@@ -10,16 +10,16 @@ exports.findAll = (req,res, next) => {
     .select('name')
     .exec()
     .then( uni => {
-        Faculty
+        Department
         .find()
-        .select('_id uni_id name detail dean website')
+        .select('_id universityId name detail headOfDepartment website')
         .exec()
-        .then(faculties => {
-            let response = new Response(faculties, "All faculties");
+        .then(departments => {
+            let response = new Response(departments, `All departments of university ${uni.name}`);
             res.status(200).json(response);
         })
         .catch(err => {
-            let response = new Response(err, `Faculty not found`);
+            let response = new Response(err.toString(), `Department not found`);
             res.status(500).json(response);
         });
     })
@@ -37,23 +37,23 @@ exports.find = (req,res,next) => {
     .select('name')
     .exec()
     .then( uni => {
-        const facultyId = req.params.facultyId;
+        const departmentId = req.params.departmentId;
 
-        Faculty
-        .findById(facultyId)
-        .select('_id uni_id name detail dean website')
+        Department
+        .findById(departmentId)
+        .select('_id universityId name detail headOfDepartment website')
         .exec()
-        .then(faculty => {
-            let response = new Response(faculty, "Faculty found");
+        .then(department => {
+            let response = new Response(department, `Department ${department.name} found`);
             res.status(200).json(response);
         })
         .catch(err => {
-            let response = new Response(err, `Failure on querying faculties of university ${uni.name}`);
+            let response = new Response(err.toString(), `Failure on querying departments of university ${uni.name}`);
             res.status(500).json(response);
         });
     })
     .catch( err => {
-        let response = new Response(err, `University not found by id: ${uniId}`);
+        let response = new Response(err.toString(), `University not found by id: ${uniId}`);
         res.status(500).json(response);
     });
 }
@@ -66,21 +66,21 @@ exports.insert = (req, res, next) => {
     .select('name')
     .exec()
     .then( uni => {
-        const faculty = new Faculty({
-            uni_id: uniId,
+        const department = new Department({
+            universityId: uniId,
             name: req.body.name,
             detail: req.body.detail,
-            dean: req.body.dean,
+            headOfDepartment: req.body.headOfDepartment,
             website: req.body.website,
         });
-    
-        faculty
+
+        department
         .save()
         .then(result => {
             res.status(201).send("OK");
         })
         .catch(err => {
-            let response = new Response(err.toString(), `Faculty ${faculty.name} could not be created`);
+            let response = new Response(err.toString(), `Department ${department.name} could not be created`);
             res.status(500).json(response);
         });
     })
@@ -92,16 +92,16 @@ exports.insert = (req, res, next) => {
 
 exports.update = (req, res, next) => {
     const uniId = req.params.uniId;
-    
+
     University
     .findById(uniId)
     .select('name')
     .exec()
     .then( uni => {
-        const facultyId = req.params.facultyId;
+        const departmentId = req.params.departmentId;
 
-        Faculty.
-        updateOne({_id: facultyId}, {
+        Department
+        .updateOne({_id: departmentId}, {
           $set: req.body
         })
         .exec()
@@ -109,41 +109,41 @@ exports.update = (req, res, next) => {
             res.status(201).send("OK");
         })
         .catch(err => {
-            let response = new Response(err, `Faculty ${name} could not be updated`);
+            let response = new Response(err.toString(), `Deparment ${name} could not be updated`);
             res.status(500).json(response);
         });
 
     })
     .catch( err => {
-        let response = new Response(err, `University not found by id: ${uniId}`);
+        let response = new Response(err.toString(), `University not found by id: ${uniId}`);
         res.status(500).json(response);
     });
 }
 
 exports.delete = (req, res, next) => {
     const uniId = req.params.uniId;
-    
+
     University
     .findById(uniId)
     .select('name')
     .exec()
     .then( uni => {
-        const facultyId = req.params.facultyId;
+        const departmentId = req.params.departmentId;
 
-        Faculty
-        .deleteOne({_id: facultyId})
+        Department
+        .deleteOne({_id: departmentId})
         .exec()
         .then(result => {
             res.status(200).send('OK');
         })
         .catch(err => {
-            let response = new Response(err, `Faculty ${id} could not be deleted`);
+            let response = new Response(err.toString(), `Department ${id} could not be deleted`);
             res.status(500).json(response);
         });
 
     })
     .catch( err => {
-        let response = new Response(err, `University not found by id: ${uniId}`);
+        let response = new Response(err.toString(), `University not found by id: ${uniId}`);
         res.status(500).json(response);
-    });    
+    });
 };

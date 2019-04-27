@@ -6,6 +6,9 @@ const mongoose = require('mongoose');
 /* Objects */
 const universityController = require('../controller/universityController');
 const facultyController = require('../controller/facultyController');
+const departmentController= require('../controller/departmentController');
+
+/*********** Universities ************/
 
 /* Get All Universities */
 router.get('/', universityController.findAll);
@@ -38,5 +41,22 @@ router.put('/:uniId/faculty/:facultyId', facultyController.update);
 
 /* Delete a faculty */
 router.delete('/:uniId/faculty/:facultyId', facultyController.delete);
+
+/*********** Departments ************/
+
+/* Get All Departments */
+router.get('/:uniId/department', departmentController.findAll);
+
+/* Get a department */
+router.get('/:uniId/department/:departmentId', departmentController.find);
+
+/* Add a department */
+router.post('/:uniId/department/', departmentController.insert);
+
+/* Update a department */
+router.put('/:uniId/department/:departmentId', departmentController.update);
+
+/* Delete a department */
+router.delete('/:uniId/department/:departmentId', departmentController.delete);
 
 module.exports = router;
