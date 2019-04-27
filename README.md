@@ -106,17 +106,17 @@ npm start
 ++ **put** : Delete a faculty
 
 - /school/department
--- **get** : Get all departments 
--- **post**: Add a new department
+++ **get** : Get all departments 
+++ **post**: Add a new department
 
 - /school/department/:id
--- **get** : Get a department infos
+++ **get** : Get a department infos
 
 - /school/department/update/:id
--- **post** : Update a department infos
+++ **post** : Update a department infos
 
 - /school/department/delete/:id
--- **post** : Delete a department
+++ **post** : Delete a department
 
 > if there is **--** on a method, it's mean it is **not** done yet
 > if there is **++** on a method, it's mean it is done
