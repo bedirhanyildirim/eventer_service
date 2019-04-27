@@ -80,30 +80,30 @@ npm start
 
 **School Actions**
 - /school
--- **get** : Get school
+++ **get** : Get school
 ++ **post**: Add a new school
 
 - /school/:id
--- **get** : Get a school infos
+++ **get** : Get a school infos
 
 - /school/update/:id
--- **post** : Update a school infos
+++ **put** : Update a school infos
 
 - /school/delete/:id
--- **post** : Delete a school
+++ **post** : Delete a school
 
 - /school/faculty
--- **get** : Get all faculties 
--- **post**: Add a new faculty
+++ **get** : Get all faculties 
+++ **post**: Add a new faculty
 
 - /school/faculty/:id
--- **get** : Get a faculty infos
+++**get** : Get a faculty infos
 
 - /school/faculty/update/:id
--- **post** : Update a faculty infos
+++ **put** : Update a faculty infos
 
 - /school/faculty/delete/:id
--- **post** : Delete a faculty
+++ **put** : Delete a faculty
 
 - /school/department
 -- **get** : Get all departments 
