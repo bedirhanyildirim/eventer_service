@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const BaseSchema = require('./base');
 
-const uniSchema = mongoose.Schema({
+const uniSchema = new BaseSchema({
   name: {type: String, required: true},
   detail: {type: String, default: ''},
   contact: {type: String, default: ''},
