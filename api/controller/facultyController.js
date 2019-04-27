@@ -12,7 +12,7 @@ exports.findAll = (req,res, next) => {
     .then( uni => {
         Faculty
         .find()
-        .select('_id uni_id name detail dean website')
+        .select('_id universityId name detail dean website')
         .exec()
         .then(faculties => {
             let response = new Response(faculties, "All faculties");
@@ -41,7 +41,7 @@ exports.find = (req,res,next) => {
 
         Faculty
         .findById(facultyId)
-        .select('_id uni_id name detail dean website')
+        .select('_id universityId name detail dean website')
         .exec()
         .then(faculty => {
             let response = new Response(faculty, "Faculty found");
@@ -67,7 +67,7 @@ exports.insert = (req, res, next) => {
     .exec()
     .then( uni => {
         const faculty = new Faculty({
-            uni_id: uniId,
+            universityId: uniId,
             name: req.body.name,
             detail: req.body.detail,
             dean: req.body.dean,
