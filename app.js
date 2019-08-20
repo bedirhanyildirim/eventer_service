@@ -11,6 +11,8 @@ const clubsRouters = require('./api/routers/clubs');
 const eventsRouters = require('./api/routers/events');
 const userRouters = require('./api/routers/user');
 const uniRouter = require('./api/routers/university');
+const departmentRouter = require('./api/routers/department');
+const facultyRouter = require('./api/routers/faculty');
 
 /* Mongoose */
 mongoose.connect('mongodb://bedirhanyildirim:' + process.env.MONGO_ATLAS_PW + '@student-club-otomation-shard-00-00-qxdz9.mongodb.net:27017,student-club-otomation-shard-00-01-qxdz9.mongodb.net:27017,student-club-otomation-shard-00-02-qxdz9.mongodb.net:27017/test?ssl=true&replicaSet=student-club-otomation-shard-0&authSource=admin&retryWrites=true',{useCreateIndex: true, useNewUrlParser: true });
@@ -42,6 +44,8 @@ app.use('/clubs', clubsRouters);
 app.use('/events', eventsRouters);
 app.use('/user', userRouters);
 app.use('/university', uniRouter);
+app.use('/faculty', facultyRouter);
+app.use('/department', departmentRouter);
 
 /* 404 Error */
 app.use((req, res, next) => {

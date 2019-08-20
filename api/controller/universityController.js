@@ -1,6 +1,5 @@
 const University = require('../models/university');
-
-const Response = require('../util/response')
+const Response = require('../util/response');
 
 exports.findAll = (req,res, next) => {
     University

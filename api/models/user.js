@@ -18,7 +18,8 @@ const userSchema = mongoose.Schema({
   faculty: {type: String, default: ''},
   department: {type: String, default: ''},
   favList: {type: Array, default: []},
-  attendedEvents: {type: Array, default: []}
+  attendedEvents: {type: Array, default: []},
+  studentNumber: {type: String, default: ''}
 });
 
 module.exports = mongoose.model('User', userSchema);
